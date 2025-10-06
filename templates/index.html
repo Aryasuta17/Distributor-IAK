@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT IKAN TERBANG MAKMUR SEJAHTERA Tbk - Distribusi Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #495057;
+            overflow-x: hidden;
+        }
+
+        /* Header/Navbar */
+        header {
+            background: #007BFF;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cta-button, .admin-button {
+            background: #FFFFFF;
+            color: #007BFF;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+        .cta-button:hover, .admin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: #FFFFFF;
+            padding: 140px 20px 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        /* Tracking Section */
+        .tracking-box {
+            background: #007BFF;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        
+        .tracking-box:hover {
+            transform: translateY(-5px) rotateX(2deg);
+        }
+
+        .tracking-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tracking-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .tracking-form input:focus {
+            outline: none;
+            border-color: #FFFFFF;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+        
+        .tracking-form input::placeholder {
+            color: #666;
+            font-weight: 600;
+        }
+
+        .tracking-form button {
+            background: #dc3545;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tracking-form button:hover {
+            background: #c82333;
+        }
+
+        .tracking-result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            text-align: left;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .tracking-result.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .result-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #007BFF;
+            margin-bottom: 15px;
+        }
+        
+        .result-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 600;
+        }
+
+        .result-detail:last-child {
+            border-bottom: none;
+        }
+
+        .error-msg {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(248, 215, 218, 0.95);
+            color: #721c24;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #007BFF;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 50px rgba(0,123,255,0.3);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #495057;
+            font-weight: 700;
+        }
+
+        .service-eta {
+            font-size: 28px;
+            font-weight: 700;
+            color: #007BFF;
+            margin: 15px 0;
+        }
+
+        .service-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: #FFFFFF;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 600;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 20px;
+            background: #FFFFFF;
+        }
+
+        .partner-logos {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 120px;
+        }
+
+        .partner-track {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            animation: scroll 30s linear infinite;
+            will-change: transform;
+        }
+
+        .partner-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-logo {
+            flex-shrink: 0;
+            width: 160px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.4s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.1);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background: #007BFF;
+            color: #FFFFFF;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .footer-column a {
+            color: #FFFFFF;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            font-weight: 600;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .feedback-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 30px;
+            background: #FFFFFF;
+            color: #007BFF;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #007BFF;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .tracking-form {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">PT IKAN TERBANG MAKMUR SEJAHTERA Tbk</div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#layanan">Layanan Kami</a></li>
+                <li><a href="#tentang">Tentang Perusahaan</a></li>
+                <li><a href="#mitra">Mitra Kami</a></li>
+            </ul>
+            <div class="header-buttons">
+                <a href="#kontak" class="cta-button">Hubungi Kami</a>
+                <a href="/admin" class="admin-button">
+                    <i class="fas fa-user-shield"></i> Admin Dashboard
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <h1>Distribusi Cepat & Terpercaya ke Seluruh Nusantara</h1>
+        <p>Solusi logistik terpadu untuk segala kebutuhan bisnis Anda. Aman, tepat waktu, dan efisien.</p>
+        
+        <!-- Tracking Box -->
+        <div class="tracking-box">
+            <form class="tracking-form" onsubmit="trackShipment(event)">
+                <input 
+                    type="text" 
+                    id="resiInput" 
+                    placeholder="Masukkan Nomor Resi Anda"
+                    required
+                >
+                <button type="submit">
+                    <i class="fas fa-search"></i> Lacak Kiriman
+                </button>
+            </form>
+            
+            <div class="error-msg" id="errorMsg"></div>
+            
+            <div class="tracking-result" id="trackingResult">
+                <div class="result-header">
+                    <i class="fas fa-box"></i> <strong>Detail Pengiriman</strong>
+                </div>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="services">
+        <div class="container">
+            <h2 class="section-title">Pilihan Layanan Sesuai Kebutuhan Anda</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Express</h3>
+                    <div class="service-eta">1-2 Hari</div>
+                    <p>Layanan pengiriman super cepat untuk kebutuhan mendesak Anda. Prioritas tertinggi dengan jaminan ketepatan waktu.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Reguler</h3>
+                    <div class="service-eta">5-7 Hari</div>
+                    <p>Pilihan terbaik untuk pengiriman rutin dengan harga terjangkau dan keandalan terjamin untuk seluruh wilayah.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Hemat</h3>
+                    <div class="service-eta">10-12 Hari</div>
+                    <p>Solusi ekonomis untuk pengiriman dalam jumlah besar. Hemat biaya tanpa mengurangi keamanan paket Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="about">
+        <div class="container">
+            <h2 class="section-title" style="color: #FFFFFF;">TENTANG</h2>
+            <p>
+                Kami adalah perusahaan distributor terkemuka yang telah berpengalaman lebih dari 20 tahun dalam industri logistik dan distribusi di Indonesia. Dengan jaringan yang tersebar di seluruh Nusantara, kami berkomitmen untuk memberikan layanan terbaik kepada mitra bisnis kami.
+            </p>
+            <p>
+                Visi kami adalah menjadi mitra distribusi terpercaya yang menghadirkan solusi logistik inovatif, efisien, dan berkelanjutan. Kami senantiasa meningkatkan kualitas layanan melalui teknologi modern dan tim profesional yang berdedikasi tinggi untuk kepuasan pelanggan.
+            </p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="mitra" class="partners">
+        <div class="container">
+            <h2 class="section-title">Dipercaya oleh Perusahaan Terkemuka</h2>
+            <div class="partner-logos">
+                <div class="partner-track" id="partnerTrack">
+                    <!-- First set -->
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/hif/0/0d/Chelsea_FC.png" alt="Chelsea">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/320px-Shopee_logo.svg.png" alt="Shopee">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Walmart_logo_%282025%3B_Alt%29.svg" alt="Walmart">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/320px-Amazon_Web_Services_Logo.svg.png" alt="AWS">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/320px-Oracle_logo.svg.png" alt="Oracle">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/FIFA_series_logo_%282020-2023%29.svg" alt="Fifa">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" alt="F1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Moto_Gp_logo.svg" alt="Motogp">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/SpaceX-Logo.svg" alt="Space X">
+                    </div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/hif/0/0d/Chelsea_FC.png" alt="Chelsea">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/320px-Shopee_logo.svg.png" alt="Shopee">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Walmart_logo_%282025%3B_Alt%29.svg" alt="Walmart">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/320px-Amazon_Web_Services_Logo.svg.png" alt="AWS">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/320px-Oracle_logo.svg.png" alt="Oracle">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/FIFA_series_logo_%282020-2023%29.svg" alt="Fifa">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" alt="F1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Moto_Gp_logo.svg" alt="Motogp">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/SpaceX-Logo.svg" alt="Space X">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NAVIGASI</h3>
+                <ul>
+                    <li><a href="#layanan">Layanan Kami</a></li>
+                    <li><a href="#tentang">Tentang Perusahaan</a></li>
+                    <li><a href="#mitra">Mitra Kami</a></li>
+                    <li><a href="#beranda">Lacak Kiriman</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>BUTUH BANTUAN?</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> Hubungi Kami: +62 XXX XXXX XXXX</li>
+                    <li><i class="fas fa-envelope"></i> Informasi Umum: info@ikanterbang.co.id</li>
+                    <li><i class="fas fa-briefcase"></i> Penjualan (Sales): sales@ikanterbang.co.id</li>
+                    <li><i class="fas fa-users"></i> Karir: <a href="#">Bergabung dengan Tim Kami</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>IKUTI KAMI</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <a href="#" class="feedback-button">
+                    <i class="fas fa-comment-dots"></i> Kirim Masukan
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 PT IKAN TERBANG MAKMUR SEJAHTERA Tbk. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Tilt Effect for Cards
+        function init3DTilt() {
+            const cards = document.querySelectorAll('.service-card, .tracking-box');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                });
+            });
+        }
+
+        // Intersection Observer for Fade In Animation
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.service-card, .partner-logo, .footer-column').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        async function trackShipment(event) {
+            event.preventDefault();
+            
+            const resiInput = document.getElementById('resiInput');
+            const errorMsg = document.getElementById('errorMsg');
+            const trackingResult = document.getElementById('trackingResult');
+            const resultContent = document.getElementById('resultContent');
+            
+            const resiNumber = resiInput.value.trim();
+            
+            if (!resiNumber) {
+                showError('Mohon masukkan nomor resi');
+                return;
+            }
+            
+            errorMsg.classList.remove('show');
+            trackingResult.classList.remove('show');
+            
+            try {
+                const response = await fetch(`/status?no_resi=${encodeURIComponent(resiNumber)}`);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    displayResult(data);
+                } else {
+                    showError(data.message || 'Nomor resi tidak ditemukan');
+                }
+            } catch (error) {
+                showError('Terjadi kesalahan saat melacak pengiriman. Silakan coba lagi.');
+            }
+        }
+        
+        function displayResult(data) {
+            const resultContent = document.getElementById('resultContent');
+            const trackingResult = document.getElementById('trackingResult');
+            
+            const asal = data.asal || data.asal_pengirim || '-';
+            const tujuan = data.tujuan || data.tujuan_retail || '-';
+            const harga = data.harga_pengiriman || data.biaya_pengiriman || 0;
+            const distributor = data.distributor_name || data.nama_distributor || '-';
+            const status = data.status_pengiriman || '-';
+            
+            resultContent.innerHTML = `
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Nomor Resi:</strong>
+                    <span style="color: #007BFF;"><strong>${data.no_resi}</strong></span>
+                </div>
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Status:</strong>
+                    <span style="color: #28a745; font-weight: 700;">${status}</span>
+                </div>
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Asal:</strong>
+                    <span style="color: #007BFF;"><strong>${capitalizeFirst(asal)}</strong></span>
+                </div>
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Tujuan:</strong>
+                    <span style="color: #007BFF;"><strong>${capitalizeFirst(tujuan)}</strong></span>
+                </div>
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Biaya Pengiriman:</strong>
+                    <span style="color: #007BFF;"><strong>Rp ${harga.toLocaleString('id-ID')}</strong></span>
+                </div>
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Distributor:</strong>
+                    <span style="color: #007BFF;"><strong>${distributor}</strong></span>
+                </div>
+                ${data.eta_text ? `
+                <div class="result-detail">
+                    <strong style="color: #007BFF;">Estimasi Tiba:</strong>
+                    <span style="color: #007BFF;"><strong>${data.eta_text}</strong></span>
+                </div>
+                ` : ''}
+            `;
+            
+            trackingResult.classList.add('show');
+        }
+        
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMsg');
+            const trackingResult = document.getElementById('trackingResult');
+            
+            trackingResult.classList.remove('show');
+            errorMsg.textContent = message;
+            errorMsg.classList.add('show');
+            
+            setTimeout(() => {
+                errorMsg.classList.remove('show');
+            }, 5000);
+        }
+        
+        function capitalizeFirst(str) {
+            if (!str) return '-';
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Initialize all effects when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            init3DTilt();
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
