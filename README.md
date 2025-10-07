@@ -381,42 +381,18 @@ def handle_distributor_event():
     return jsonify({"received": True}), 200
 ```
 
----
-
-## 🔐 Security
-
-- ✅ HMAC-SHA256 webhook signature verification
-- ✅ Session-based authentication untuk admin
-- ✅ Input validation untuk semua endpoints
-- ✅ Firebase security rules
-- ✅ CORS protection
-
----
-
-## 🎯 Roadmap
-
-- [ ] Email notification untuk customer
-- [ ] SMS gateway integration
-- [ ] Mobile app (React Native)
-- [ ] Machine learning untuk ETA prediction
-- [ ] Multi-warehouse support
-- [ ] International shipping
-
----
-
 ## 👥 Team
 
 **Kelompok D - Modul Distributor**
 
+- ILHAM DICKY DARMAWAN 164221023 
+- PUTU ARYASUTA TIRTA 164221035
+- HADYAN ADIRA PERDANA 164221085
+- ZHIDDAN ADITYA MAHARDIKA 164221086
+
 - UTS Integrasi Aplikasi Komputer
 - Supply Chain Management System
 - PT Ikan Terbang Makmur Sejahtera Tbk
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -425,21 +401,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Firebase for cloud infrastructure
 - Chart.js for beautiful visualizations
 - Flask community for excellent documentation
-- Kelompok A, B, E, F untuk integrasi yang solid
-
----
-
-## 📞 Contact & Support
-
-- 📧 Email: support@ikanterbang.co.id
-- 🌐 Website: [https://ikanterbang.co.id](https://ikanterbang.co.id)
-- 📱 WhatsApp: +62 XXX XXXX XXXX
-
----
-
-<div align="center">
-
-**Made with ❤️ by Kelompok D**
+- Kelompok A, B, E, F untuk integrasi
 
 [⬆ Back to Top](#-pt-ikan-terbang-makmur-sejahtera-tbk---distributor-module)
 
