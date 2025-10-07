@@ -312,19 +312,6 @@ Import [Postman Collection](docs/postman_collection.json) untuk testing lengkap.
 
 ---
 
-## 📸
-
-### Landing Page
-
-
-
-### Admin Dashboard
-
-
-
-### Analytics
-
-
 ## 🤝 Integration
 
 ### Untuk Supplier (Kelompok A/B)
